@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Oskar Wickström" />
+  <title>等幅フォントのウェブ</title>
+  <link rel="alternate" hreflang="en" href="https://nexustar.github.io/the-monospace-web-cjk/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hans.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hant.html" />
+  <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
+  <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
+  <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
+  <link rel="stylesheet" href="src/reset.css" />
+  <link rel="stylesheet" href="src/index.css" />
+  <style>
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      height: var(--line-height);
+      margin: 0;
+    }
+    .toolbar a, .toolbar label {
+      white-space: nowrap;
+    }
+    .toolbar label {
+      display: inline;
+      width: auto;
+    }
+    .toolbar [aria-current] {
+      text-decoration: none;
+      font-weight: var(--font-weight-bold);
+    }
+  </style>
+</head>
+<body>
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">等幅フォントのウェブ</h1>
+      <span class="subtitle">ミニマリストデザインの探求</span>
+    </td>
+    <th>版</th>
+    <td class="width-min">v0.1.5</td>
+  </tr>
+  <tr>
+    <th>更新日</th>
+    <td class="width-min"><time style="white-space: pre;">2025-08-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">著者</th>
+    <td class="width-auto"><a href="https://wickstrom.tech"><cite>Oskar
+Wickström</cite></a></td>
+    <th class="width-min">ライセンス</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<nav class="toolbar">
+<span>
+<a href="index.html" hreflang="en" lang="en">EN</a> /
+<a href="index.zh-Hans.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> /
+<a href="index.zh-Hant.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> /
+<a href="index.ja.html" hreflang="ja" lang="ja" aria-current="page">日本語</a> /
+<a href="index.ko.html" hreflang="ko" lang="ko">한국어</a>
+</span>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> デバッグ</label>
+</nav>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">目次</h2>
+<ul class="incremental">
+<li><a href="#はじめに" id="toc-はじめに">はじめに</a></li>
+<li><a href="#基本" id="toc-基本">基本</a></li>
+<li><a href="#リスト" id="toc-リスト">リスト</a></li>
+<li><a href="#テーブル" id="toc-テーブル">テーブル</a></li>
+<li><a href="#フォーム" id="toc-フォーム">フォーム</a></li>
+<li><a href="#グリッド" id="toc-グリッド">グリッド</a></li>
+<li><a href="#ascii-描画" id="toc-ascii-描画">ASCII 描画</a></li>
+<li><a href="#メディア" id="toc-メディア">メディア</a></li>
+<li><a href="#おわりに" id="toc-おわりに">おわりに</a></li>
+</ul>
+</nav>
+<h2 id="はじめに">はじめに</h2>
+<p>等幅フォントは多くの人に愛されています。プロポーショナルフォントよりも読みやすく、一貫性があり、美しいと感じる人もいます。ターミナルで何年も過ごして洗脳されただけかもしれません。それとも、どうしようもなくノスタルジックなのでしょうか。よくわかりません。でも好きなんです。だから等幅フォントだけのウェブを試してみることにしました。</p>
+<p>このページでは、等幅グリッドを使ってテキストの整列や図の描画を行っています。シンプルな
+Markdown ドキュメント（Pandoc を使用）から生成され、CSS と少しの
+Javascript
+でグリッド上にレンダリングされます。ページはレスポンシブで、文字サイズ単位で段階的に縮小します。標準要素は<em>そのまま動く</em>はずです。少なくともそれが目標です。セマンティックな
+HTML を、まるで 70 年代に戻ったかのようにレンダリングしています。</p>
+<p>さて、これは本当に良いアイデアなのでしょうか？技術的・創造的な挑戦であり、この美学が好きです。使いたい方は、ライセンスを尊重した上で、自由にフォークやコピーしてください。改善や標準要素のサポート追加で更新するかもしれません。</p>
+<h2 id="基本">基本</h2>
+<p>このドキュメントはところどころ追加のクラスを使っていますが、基本的にはただのマークアップです。例えば、これは普通の段落です。</p>
+<p>この水平線を見てください：</p>
+<hr>
+<p>素敵ですね。<code>&lt;details&gt;</code>
+要素にコンテンツを隠すことができます：</p>
+<details>
+<summary>
+内容の短い要約
+</summary>
+<p>
+隠された宝物。
+</p>
+</details>
+<h2 id="リスト">リスト</h2>
+<p>これは普通の箇条書きリストです：</p>
+<ul class="incremental">
+<li>バナナ</li>
+<li>紙の船</li>
+<li>きゅうり</li>
+<li>ロケット</li>
+</ul>
+<p>番号付きリストも期待通りの見た目です：</p>
+<ol class="incremental" type="1">
+<li>目標</li>
+<li>動機
+<ol class="incremental" type="1">
+<li>内発的</li>
+<li>外発的</li>
+</ol></li>
+<li>二次的効果</li>
+</ol>
+<p>ツリーの視覚化も便利です。これは <code>tree</code>
+クラスを付けた普通の非順序リストです：</p>
+<ul class="tree">
+<li>
+<p style="margin: 0;">
+<strong>/dev/nvme0n1p2</strong>
+</p>
+<ul class="incremental">
+<li>usr
+<ul class="incremental">
+<li>local<br />
+</li>
+<li>share<br />
+</li>
+<li>libexec<br />
+</li>
+<li>include<br />
+</li>
+<li>sbin<br />
+</li>
+<li>src<br />
+</li>
+<li>lib64<br />
+</li>
+<li>lib<br />
+</li>
+<li>bin<br />
+</li>
+<li>games
+<ul class="incremental">
+<li>solitaire</li>
+<li>snake</li>
+<li>tic-tac-toe</li>
+</ul></li>
+<li>media<br />
+</li>
+</ul></li>
+<li>media<br />
+</li>
+<li>run<br />
+</li>
+<li>tmp</li>
+</ul>
+</li>
+</ul>
+<h2 id="テーブル">テーブル</h2>
+<p>等幅グリッドに自動調整される通常のテーブルが使えます。レスポンシブです。</p>
+<table>
+<thead>
+<tr>
+<th class="width-min">
+名前
+</th>
+<th class="width-auto">
+寸法
+</th>
+<th class="width-min">
+位置
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ボーボリのオベリスク
+</td>
+<td>
+1.41m × 1.41m × 4.87m
+</td>
+<td>
+43°45’50.78”N 11°15’3.34”E
+</td>
+</tr>
+<tr>
+<td>
+カフラー王のピラミッド
+</td>
+<td>
+215.25m × 215.25m × 136.4m
+</td>
+<td>
+29°58’34”N 31°07’51”E
+</td>
+</tr>
+</tbody>
+</table>
+<p>拡張できるカラムは一つだけです。</p>
+<h2 id="フォーム">フォーム</h2>
+<p>ボタンはこちら：</p>
+<nav>
+<button>
+リセット
+</button>
+<button>
+保存
+</button>
+</nav>
+<p>入力欄：</p>
+<form class="grid">
+<label>姓
+<input type="text" placeholder="入力してください..." /></label>
+<label>名
+<input type="text" placeholder="入力してください..." /></label>
+<label>年齢 <input type="text" value="30" /></label>
+</form>
+<p>ラジオボタン：</p>
+<form class="grid">
+<label><input name="radio" type="radio" /> オプション 1</label>
+<label><input name="radio" type="radio" /> オプション 2</label>
+<label><input name="radio" type="radio" /> オプション 3</label>
+</form>
+<h2 id="グリッド">グリッド</h2>
+<p>コンテナに <code>grid</code>
+クラスを追加すると、水平方向のスペースをセルに均等に分割します。等幅を維持するため、合計幅が
+100% にならない場合があります。以下はセル数が増えていく 6
+つのグリッドです：</p>
+<div class="grid">
+<input readonly value="1" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" />
+</div>
+<p>特定のセルを残りのスペースで埋めたい場合は、そのセルに
+<code>flex-grow: 1;</code> を設定します。</p>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" />
+</div>
+<h2 id="ascii-描画">ASCII 描画</h2>
+<p><code>&lt;pre&gt;</code> タグで<a
+href="https://ja.wikipedia.org/wiki/%E7%BD%AB%E7%B7%9A%E7%B4%A0%E7%89%87">罫線素片</a>を使って描画できます：</p>
+<pre><code>╭─────────╮
+│ MONOSPACE ROCKS  │
+╰─────────╯</code></pre>
+<p>より目立たせるために <code>&lt;figure&gt;</code>
+タグで囲み、<code>&lt;figcaption&gt;</code>
+を追加することもできます。</p>
+<figure>
+<pre>
+┌────┐  ┌────┐  ┌────┐
+│参加者１│  │参加者２│  │参加者３│
+└──┬─┘  └──┬─┘  └──┬─┘
+      │            │            │
+      │            │  通知１    │
+      │            │─────► │
+      │            │            │
+      │  通知２    │            │
+      │─────► │            │
+┌──┴─┐  ┌──┴─┐  ┌──┴─┐
+│参加者１│  │参加者２│  │参加者３│
+└────┘  └────┘  └────┘</pre>
+<figcaption>
+例：メッセージパッシング。
+</figcaption>
+</figure>
+<p>チャートも描いてみましょう！</p>
+<figure>
+<pre>
+              持っているもの
+
+    │                              ██ 使える
+15  │
+    │                              ░░ 壊れた
+    │
+12  │            ░
+    │            ░
+    │    ░      ░
+ 9  │    ░      ░
+    │    ░      ░
+    │    ░      ░              ░
+ 6  │    █      ░      ░      ░
+    │    █      ░      ░      ░
+    │    █      ░      █      ░
+ 3  │    █      █      █      ░
+    │    █      █      █      ░
+    │    █      █      █      ░
+ 0  └──▀───▀───▀───▀──
+         靴下   ズボン  シャツ  USB
+</pre>
+</figure>
+<h2 id="メディア">メディア</h2>
+<p>画像や動画などのメディアオブジェクトに対応しています：</p>
+<figure>
+<img src="demo/castle.jpg" alt="フランスの古城の一室 (2024)" />
+<figcaption aria-hidden="true">フランスの古城の一室 (2024)</figcaption>
+</figure>
+<figure>
+<video
+src="https://upload.wikimedia.org/wikipedia/commons/e/e0/The_Center_of_the_Web_%281914%29.webm"
+controls=""><a
+href="https://upload.wikimedia.org/wikipedia/commons/e/e0/The_Center_of_the_Web_%281914%29.webm">ウェブの中心
+(1914), ウィキメディア</a></video>
+<figcaption aria-hidden="true"><a
+href="https://en.wikisource.org/wiki/Page:The_Center_of_the_Web_(1914).webm/11">ウェブの中心
+(1914), ウィキメディア</a></figcaption>
+</figure>
+<p>ページ幅まで拡張され、等幅グリッドを維持するために下部に適切なパディングが追加されます。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>今のところは以上です。 CSS
+のスキルを磨き、デザインを楽しみながら、この制作をとても楽しみました。気に入った方、使ってみようと思った方は、ぜひ<a
+href="https://x.com/owickstrom">お知らせください</a>。</p>
+<p>ソースコード全体はこちら：<a
+href="https://github.com/owickstrom/the-monospace-web">github.com/owickstrom/the-monospace-web</a></p>
+<p>最後に、すべてのインスピレーションをくれた <a
+href="https://x.com/usgraphics">U.S. Graphics Company</a>
+に大きな感謝を。</p>
+  <div class="debug-grid"></div>
+  <script src="src/index.js"></script>
+</body>
+</html>

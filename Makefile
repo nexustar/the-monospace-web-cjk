@@ -1,12 +1,20 @@
 VERSION=$(shell jq -r .version package.json)
-DATE=$(shell date +%F)
+DATE=2025-08-20
 
-all: index.html
+SITE_URL = https://nexustar.github.io/the-monospace-web-cjk/
+LANGS = zh-Hans zh-Hant ja ko
+PAGES = index.html $(LANGS:%=index.%.html)
+PANDOC = pandoc -f markdown+east_asian_line_breaks --toc -s --css src/reset.css --css src/index.css -Vversion=v$(VERSION) -Vdate=$(DATE) -Vsite-url=$(SITE_URL) --template=demo/template.html
+
+all: $(PAGES)
 
 clean:
-	rm -f index.html
+	rm -f $(PAGES)
 
 index.html: demo/index.md demo/template.html Makefile
-	pandoc --toc -s --css src/reset.css --css src/index.css -Vversion=v$(VERSION) -Vdate=$(DATE) -i $< -o $@ --template=demo/template.html
+	$(PANDOC) -Vpage-en -i $< -o $@
+
+index.%.html: demo/index.%.md demo/template.html Makefile
+	$(PANDOC) -Vpage-$* -i $< -o $@
 
 .PHONY: all clean

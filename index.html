@@ -6,8 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Oskar Wickström" />
   <title>The Monospace Web</title>
+  <link rel="alternate" hreflang="en" href="https://nexustar.github.io/the-monospace-web-cjk/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hans.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hant.html" />
+  <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
+  <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
+  <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
   <link rel="stylesheet" href="src/reset.css" />
   <link rel="stylesheet" href="src/index.css" />
+  <style>
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      height: var(--line-height);
+      margin: 0;
+    }
+    .toolbar a, .toolbar label {
+      white-space: nowrap;
+    }
+    .toolbar label {
+      display: inline;
+      width: auto;
+    }
+    .toolbar [aria-current] {
+      text-decoration: none;
+      font-weight: var(--font-weight-bold);
+    }
+  </style>
 </head>
 <body>
 <table class="header">
@@ -31,7 +57,16 @@ Wickström</cite></a></td>
     <td>MIT</td>
   </tr>
 </table>
+<nav class="toolbar">
+<span>
+<a href="index.html" hreflang="en" lang="en" aria-current="page">EN</a> /
+<a href="index.zh-Hans.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> /
+<a href="index.zh-Hant.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> /
+<a href="index.ja.html" hreflang="ja" lang="ja">日本語</a> /
+<a href="index.ko.html" hreflang="ko" lang="ko">한국어</a>
+</span>
 <label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+</nav>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
 <ul class="incremental">

@@ -17,9 +17,37 @@ $if(description-meta)$
   <meta name="description" content="$description-meta$" />
 $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+$if(site-url)$
+  <link rel="alternate" hreflang="en" href="${site-url}" />
+  <link rel="alternate" hreflang="zh-Hans" href="${site-url}index.zh-Hans.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="${site-url}index.zh-Hant.html" />
+  <link rel="alternate" hreflang="ja" href="${site-url}index.ja.html" />
+  <link rel="alternate" hreflang="ko" href="${site-url}index.ko.html" />
+  <link rel="alternate" hreflang="x-default" href="${site-url}" />
+$endif$
 $for(css)$
   <link rel="stylesheet" href="$css$" />
 $endfor$
+  <style>
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      height: var(--line-height);
+      margin: 0;
+    }
+    .toolbar a, .toolbar label {
+      white-space: nowrap;
+    }
+    .toolbar label {
+      display: inline;
+      width: auto;
+    }
+    .toolbar [aria-current] {
+      text-decoration: none;
+      font-weight: var(--font-weight-bold);
+    }
+  </style>
 $for(header-includes)$
   $header-includes$
 $endfor$
@@ -37,21 +65,30 @@ $endfor$
       <h1 class="title">$title$</h1>
       <span class="subtitle">$subtitle$</span>
     </td>
-    <th>Version</th>
+    <th>$if(label-version)$$label-version$$else$Version$endif$</th>
     <td class="width-min">$version$</td>
   </tr>
   <tr>
-    <th>Updated</th>
+    <th>$if(label-updated)$$label-updated$$else$Updated$endif$</th>
     <td class="width-min"><time style="white-space: pre;">$date$</time></td>
   </tr>
   <tr>
-    <th class="width-min">Author</th>
+    <th class="width-min">$if(label-author)$$label-author$$else$Author$endif$</th>
     <td class="width-auto"><a href="$author-url$"><cite>$author$</cite></a></td>
-    <th class="width-min">License</th>
+    <th class="width-min">$if(label-license)$$label-license$$else$License$endif$</th>
     <td>MIT</td>
   </tr>
 </table>
-<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<nav class="toolbar">
+<span>
+<a href="index.html" hreflang="en" lang="en"$if(page-en)$ aria-current="page"$endif$>EN</a> /
+<a href="index.zh-Hans.html" hreflang="zh-Hans" lang="zh-Hans"$if(page-zh-Hans)$ aria-current="page"$endif$>简体中文</a> /
+<a href="index.zh-Hant.html" hreflang="zh-Hant" lang="zh-Hant"$if(page-zh-Hant)$ aria-current="page"$endif$>繁體中文</a> /
+<a href="index.ja.html" hreflang="ja" lang="ja"$if(page-ja)$ aria-current="page"$endif$>日本語</a> /
+<a href="index.ko.html" hreflang="ko" lang="ko"$if(page-ko)$ aria-current="page"$endif$>한국어</a>
+</span>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> $if(label-debug)$$label-debug$$else$Debug mode$endif$</label>
+</nav>
 $if(abstract)$
 <div class="abstract">
 <div class="abstract-title">$abstract-title$</div>

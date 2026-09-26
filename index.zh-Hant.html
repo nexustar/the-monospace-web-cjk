@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hant" xml:lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Oskar Wickström" />
+  <title>等寬字體網頁</title>
+  <link rel="alternate" hreflang="en" href="https://nexustar.github.io/the-monospace-web-cjk/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hans.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://nexustar.github.io/the-monospace-web-cjk/index.zh-Hant.html" />
+  <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
+  <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
+  <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
+  <link rel="stylesheet" href="src/reset.css" />
+  <link rel="stylesheet" href="src/index.css" />
+  <style>
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      height: var(--line-height);
+      margin: 0;
+    }
+    .toolbar a, .toolbar label {
+      white-space: nowrap;
+    }
+    .toolbar label {
+      display: inline;
+      width: auto;
+    }
+    .toolbar [aria-current] {
+      text-decoration: none;
+      font-weight: var(--font-weight-bold);
+    }
+  </style>
+</head>
+<body>
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">等寬字體網頁</h1>
+      <span class="subtitle">一次極簡設計探索</span>
+    </td>
+    <th>版本</th>
+    <td class="width-min">v0.1.5</td>
+  </tr>
+  <tr>
+    <th>更新</th>
+    <td class="width-min"><time style="white-space: pre;">2025-08-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">作者</th>
+    <td class="width-auto"><a href="https://wickstrom.tech"><cite>Oskar
+Wickström</cite></a></td>
+    <th class="width-min">授權</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<nav class="toolbar">
+<span>
+<a href="index.html" hreflang="en" lang="en">EN</a> /
+<a href="index.zh-Hans.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> /
+<a href="index.zh-Hant.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">繁體中文</a> /
+<a href="index.ja.html" hreflang="ja" lang="ja">日本語</a> /
+<a href="index.ko.html" hreflang="ko" lang="ko">한국어</a>
+</span>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> 除錯模式</label>
+</nav>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">目錄</h2>
+<ul class="incremental">
+<li><a href="#簡介" id="toc-簡介">簡介</a></li>
+<li><a href="#基礎" id="toc-基礎">基礎</a></li>
+<li><a href="#列表" id="toc-列表">列表</a></li>
+<li><a href="#表格" id="toc-表格">表格</a></li>
+<li><a href="#表單" id="toc-表單">表單</a></li>
+<li><a href="#網格" id="toc-網格">網格</a></li>
+<li><a href="#ascii-繪圖" id="toc-ascii-繪圖">ASCII 繪圖</a></li>
+<li><a href="#媒體" id="toc-媒體">媒體</a></li>
+<li><a href="#討論" id="toc-討論">討論</a></li>
+</ul>
+</nav>
+<h2 id="簡介">簡介</h2>
+<p>等寬字體深受許多人喜愛。有人覺得它比比例字體更易讀、更一致、更美觀。也許我們只是在終端機裡待了太久被洗腦了？還是說我們只是無可救藥地懷舊？我也不確定。但我就是喜歡它，所以我開始嘗試全等寬字體的網頁設計。</p>
+<p>在這個頁面上，我使用等寬網格來對齊文字和繪製圖表。它從一個簡單的
+Markdown 文件（使用 Pandoc）產生，CSS 和少量 Javascript
+將其渲染到網格上。頁面是響應式的，以字元為單位逐步縮放。標準元素應該<em>開箱即用</em>，至少這是目標。這是語意化的
+HTML，渲染起來就像回到了 70 年代。</p>
+<p>好吧，但這真的是個好主意嗎？這是一個技術和創意上的挑戰，而且我喜歡這種美學風格。如果你想使用它，請隨意
+fork
+或複製你需要的部分，尊重授權條款即可。我可能會持續更新，改進並支援更多標準元素。</p>
+<h2 id="基礎">基礎</h2>
+<p>這個文件在某些地方使用了一些額外的
+class，但基本上就是普通的標記。比如，這就是一個普通的段落。</p>
+<p>看看這條水平分隔線：</p>
+<hr>
+<p>很漂亮。我們可以把內容藏在 <code>&lt;details&gt;</code> 元素裡：</p>
+<details>
+<summary>
+內容的簡短摘要
+</summary>
+<p>
+隱藏的寶藏。
+</p>
+</details>
+<h2 id="列表">列表</h2>
+<p>這是一個普通的無序列表：</p>
+<ul class="incremental">
+<li>香蕉</li>
+<li>紙船</li>
+<li>黃瓜</li>
+<li>火箭</li>
+</ul>
+<p>有序列表看起來和你預期的差不多：</p>
+<ol class="incremental" type="1">
+<li>目標</li>
+<li>動機
+<ol class="incremental" type="1">
+<li>內在的</li>
+<li>外在的</li>
+</ol></li>
+<li>二階效應</li>
+</ol>
+<p>視覺化樹狀結構也不錯。這是一個帶有 <code>tree</code> class
+的普通無序列表：</p>
+<ul class="tree">
+<li>
+<p style="margin: 0;">
+<strong>/dev/nvme0n1p2</strong>
+</p>
+<ul class="incremental">
+<li>usr
+<ul class="incremental">
+<li>local<br />
+</li>
+<li>share<br />
+</li>
+<li>libexec<br />
+</li>
+<li>include<br />
+</li>
+<li>sbin<br />
+</li>
+<li>src<br />
+</li>
+<li>lib64<br />
+</li>
+<li>lib<br />
+</li>
+<li>bin<br />
+</li>
+<li>games
+<ul class="incremental">
+<li>solitaire</li>
+<li>snake</li>
+<li>tic-tac-toe</li>
+</ul></li>
+<li>media<br />
+</li>
+</ul></li>
+<li>media<br />
+</li>
+<li>run<br />
+</li>
+<li>tmp</li>
+</ul>
+</li>
+</ul>
+<h2 id="表格">表格</h2>
+<p>我們可以使用會自動適配等寬網格的普通表格。它們是響應式的。</p>
+<table>
+<thead>
+<tr>
+<th class="width-min">
+名稱
+</th>
+<th class="width-auto">
+尺寸
+</th>
+<th class="width-min">
+座標
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+波波里方尖碑
+</td>
+<td>
+1.41m × 1.41m × 4.87m
+</td>
+<td>
+43°45’50.78”N 11°15’3.34”E
+</td>
+</tr>
+<tr>
+<td>
+卡夫拉金字塔
+</td>
+<td>
+215.25m × 215.25m × 136.4m
+</td>
+<td>
+29°58’34”N 31°07’51”E
+</td>
+</tr>
+</tbody>
+</table>
+<p>注意只允許一欄自動增長。</p>
+<h2 id="表單">表單</h2>
+<p>這是一些按鈕：</p>
+<nav>
+<button>
+重設
+</button>
+<button>
+儲存
+</button>
+</nav>
+<p>以及輸入框：</p>
+<form class="grid">
+<label>姓 <input type="text" placeholder="請輸入..." /></label>
+<label>名 <input type="text" placeholder="請輸入..." /></label>
+<label>年齡 <input type="text" value="30" /></label>
+</form>
+<p>還有單選按鈕：</p>
+<form class="grid">
+<label><input name="radio" type="radio" /> 選項一</label>
+<label><input name="radio" type="radio" /> 選項二</label>
+<label><input name="radio" type="radio" /> 選項三</label>
+</form>
+<h2 id="網格">網格</h2>
+<p>給容器添加 <code>grid</code> class
+可以將水平空間均勻分配給儲存格。注意它會保持等寬，所以總寬度可能不是
+100%。以下是六個儲存格數量遞增的網格：</p>
+<div class="grid">
+<input readonly value="1" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" />
+</div>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" />
+</div>
+<p>如果想讓某個儲存格填滿剩餘空間，給它設定 <code>flex-grow: 1;</code>
+即可。</p>
+<div class="grid">
+<input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" />
+</div>
+<h2 id="ascii-繪圖">ASCII 繪圖</h2>
+<p>我們可以在 <code>&lt;pre&gt;</code> 標籤中使用<a
+href="https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E7%AC%A6">製表符</a>繪圖：</p>
+<pre><code>╭─────────╮
+│ MONOSPACE ROCKS  │
+╰─────────╯</code></pre>
+<p>為了更突出，可以用 <code>&lt;figure&gt;</code> 標籤包裹，再加上
+<code>&lt;figcaption&gt;</code>。</p>
+<figure>
+<pre>
+┌────┐  ┌────┐  ┌────┐
+│參與者１│  │參與者２│  │參與者３│
+└──┬─┘  └──┬─┘  └──┬─┘
+      │            │            │
+      │            │  訊息１    │
+      │            │─────► │
+      │            │            │
+      │  訊息２    │            │
+      │─────► │            │
+┌──┴─┐  ┌──┴─┐  ┌──┴─┐
+│參與者１│  │參與者２│  │參與者３│
+└────┘  └────┘  └────┘</pre>
+<figcaption>
+範例：訊息傳遞。
+</figcaption>
+</figure>
+<p>再來畫一個圖表！</p>
+<figure>
+<pre>
+              我擁有的東西
+
+    │                              ██ 可用
+15  │
+    │                              ░░ 損壞
+    │
+12  │            ░
+    │            ░
+    │    ░      ░
+ 9  │    ░      ░
+    │    ░      ░
+    │    ░      ░              ░
+ 6  │    █      ░      ░      ░
+    │    █      ░      ░      ░
+    │    █      ░      █      ░
+ 3  │    █      █      █      ░
+    │    █      █      █      ░
+    │    █      █      █      ░
+ 0  └──▀───▀───▀───▀──
+         襪子   牛仔褲   襯衫 隨身碟
+</pre>
+</figure>
+<h2 id="媒體">媒體</h2>
+<p>支援媒體物件，如圖片和影片：</p>
+<figure>
+<img src="demo/castle.jpg" alt="法國古堡中的一個房間 (2024)" />
+<figcaption aria-hidden="true">法國古堡中的一個房間 (2024)</figcaption>
+</figure>
+<figure>
+<video
+src="https://upload.wikimedia.org/wikipedia/commons/e/e0/The_Center_of_the_Web_%281914%29.webm"
+controls=""><a
+href="https://upload.wikimedia.org/wikipedia/commons/e/e0/The_Center_of_the_Web_%281914%29.webm">網之中心
+(1914), 維基媒體</a></video>
+<figcaption aria-hidden="true"><a
+href="https://en.wikisource.org/wiki/Page:The_Center_of_the_Web_(1914).webm/11">網之中心
+(1914), 維基媒體</a></figcaption>
+</figure>
+<p>它們會擴展到頁面寬度，並在底部添加適當的內邊距以保持等寬網格對齊。</p>
+<h2 id="討論">討論</h2>
+<p>目前就是這些了。我非常享受製作這個頁面的過程，鍛鍊了我的 CSS
+技能，設計也很有趣。如果你喜歡它，甚至決定使用它，請<a
+href="https://x.com/owickstrom">告訴我</a>。</p>
+<p>完整原始碼在這裡：<a
+href="https://github.com/owickstrom/the-monospace-web">github.com/owickstrom/the-monospace-web</a></p>
+<p>最後，向 <a href="https://x.com/usgraphics">U.S. Graphics Company</a>
+致以崇高的敬意，感謝所有的靈感。</p>
+  <div class="debug-grid"></div>
+  <script src="src/index.js"></script>
+</body>
+</html>
