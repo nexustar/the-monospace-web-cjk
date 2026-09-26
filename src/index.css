@@ -159,7 +159,9 @@ th, td {
   vertical-align: top;
   text-align: left;
 }
-table tbody tr:first-child > * {
+/* the table's first row, whether in thead or the first tbody */
+table thead tr:first-child > *,
+table tbody:not(thead ~ tbody, tbody ~ tbody) tr:first-child > * {
   padding-top: calc((var(--line-height) / 2) - var(--border-thickness));
 }
 
