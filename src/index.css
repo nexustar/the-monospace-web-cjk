@@ -395,8 +395,8 @@ label input {
 }
 .tree ul li {
   position: relative;
-  padding-left: 1.5ch;
-  margin-left: 1.5ch;
+  padding-left: calc(1.5ch - var(--border-thickness) / 2);
+  margin-left: calc(1.5ch - var(--border-thickness) / 2);
   border-left: var(--border-thickness) solid var(--text-color);
 }
 .tree ul li:before {
@@ -409,15 +409,15 @@ label input {
   border-bottom: var(--border-thickness) solid var(--text-color);
 }
 .tree ul li:last-child {
-  border-left: none;
+  border-left-color: transparent;
 }
 .tree ul li:last-child:after {
   position: absolute;
   display: block;
   top: 0;
-  left: 0;
+  left: calc(-1 * var(--border-thickness));
   content: "";
-  height: calc(var(--line-height) / 2);
+  height: calc(var(--line-height) / 2 + var(--border-thickness));
   border-left: var(--border-thickness) solid var(--text-color);
 }
 
