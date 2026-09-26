@@ -4,6 +4,7 @@ subtitle: ミニマリストデザインの探求
 author: Oskar Wickström
 author-url: "https://wickstrom.tech"
 lang: ja
+cjk-font: JP
 label-version: 版
 label-updated: 更新日
 label-author: 著者

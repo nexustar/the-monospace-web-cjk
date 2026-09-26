@@ -25,6 +25,27 @@
   font-size: 16px;
 }
 
+:root:lang(zh) {
+  --font-family: "PlemoCJK SC", "JetBrains Mono", monospace;
+}
+:root:is(:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)) {
+  --font-family: "PlemoCJK TC", "JetBrains Mono", monospace;
+}
+:root:lang(ja) {
+  --font-family: "PlemoCJK JP", "JetBrains Mono", monospace;
+}
+:root:lang(ko) {
+  --font-family: "PlemoCJK KR", "JetBrains Mono", monospace;
+}
+:root:is(:lang(zh), :lang(ja), :lang(ko)) {
+  --font-weight-normal: 450;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+:root:is(:lang(zh), :lang(ja), :lang(ko)) th {
+  font-weight: 600;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: #fff;

@@ -4,6 +4,7 @@ subtitle: 미니멀리스트 디자인 탐구
 author: Oskar Wickström
 author-url: "https://wickstrom.tech"
 lang: ko
+cjk-font: KR
 label-version: 버전
 label-updated: 업데이트
 label-author: 저자

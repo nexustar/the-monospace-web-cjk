@@ -4,6 +4,7 @@ subtitle: 一次極簡設計探索
 author: Oskar Wickström
 author-url: "https://wickstrom.tech"
 lang: zh-Hant
+cjk-font: TC
 label-version: 版本
 label-updated: 更新
 label-author: 作者
