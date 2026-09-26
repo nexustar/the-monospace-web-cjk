@@ -6,12 +6,14 @@
 
 :root {
   --font-family: "JetBrains Mono", monospace;
-  --line-height: 1.20rem;
+  --line-height: 1.25rem;
   --border-thickness: 2px;
   --text-color: #000;
   --text-color-alt: #666;
   --background-color: #fff;
   --background-color-alt: #eee;
+
+  --body-max-width: 52.8rem;
 
   --font-weight-normal: 500;
   --font-weight-medium: 600;
@@ -79,8 +81,16 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: var(--line-height) 2ch;
-  max-width: calc(min(80ch, round(down, 100%, 1ch)));
+  /* The frame (width, left padding) doesn't depend on the font, so the text column stays put
+     when switching languages. The content width is rounded down to 2ch and the remainder goes
+     to the right padding. +0.5px: layout units truncate to 1/64px, so exact multiples of ch
+     would lose a step (inside round() for the body, after it for descendants' round()). */
+  --body-padding: 1.8rem;
+  --body-content: min(var(--body-max-width), 100% - 2 * var(--body-padding));
+  padding: var(--line-height)
+    calc(var(--body-padding) + var(--body-content) - round(down, var(--body-content) + 0.5px, 2ch) - 0.5px)
+    var(--line-height) var(--body-padding);
+  max-width: calc(var(--body-max-width) + 2 * var(--body-padding));
   line-height: var(--line-height);
   overflow-x: hidden;
 }
@@ -90,7 +100,7 @@ body {
     font-size: 14px;
   }
   body {
-    padding: var(--line-height) 1ch;
+    --body-padding: 1.2rem;
   }
 }
 
@@ -364,6 +374,14 @@ input[type=radio],
 input[type=radio]:before {
   border-radius: 100%;
 }
+input[type=radio] {
+  height: 2ch;
+  padding: 0;
+  margin: calc((var(--line-height) - 2ch) / 2) 0;
+}
+input[type=radio]:checked:before {
+  height: 1ch;
+}
 
 button:focus, input:focus {
   --border-thickness: 3px;
@@ -485,7 +503,7 @@ label input {
     repeating-linear-gradient(90deg, var(--color) 0 1px, transparent 1px 100%);
   background-size: 1ch var(--line-height);
   /* -0.5px: center the 1px lines on cell boundaries instead of inside each cell */
-  background-position: -0.5px -0.5px;
+  background-position: calc(var(--body-padding) - 0.5px) -0.5px;
   margin: 0;
 }
 
