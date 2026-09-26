@@ -141,7 +141,9 @@ sub {
 table {
   position: relative;
   top: calc(var(--line-height) / 2);
-  width: calc(round(down, 100%, 1ch));
+  /* center collapsed borders on grid lines so every cell's text lands on the grid */
+  left: calc(var(--border-thickness) / -2);
+  width: calc(round(down, 100%, 1ch) + var(--border-thickness));
   border-collapse: collapse;
   margin: 0 0 calc(var(--line-height) * 2);
 }
@@ -201,7 +203,7 @@ img {
 
 details {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) - var(--border-thickness)) 1ch;
+  padding: calc(var(--line-height) - var(--border-thickness)) calc(1ch - var(--border-thickness));
   margin-bottom: var(--line-height);
 }
 
@@ -455,6 +457,8 @@ label input {
     repeating-linear-gradient(var(--color) 0 1px, transparent 1px 100%),
     repeating-linear-gradient(90deg, var(--color) 0 1px, transparent 1px 100%);
   background-size: 1ch var(--line-height);
+  /* -0.5px: center the 1px lines on cell boundaries instead of inside each cell */
+  background-position: -0.5px -0.5px;
   margin: 0;
 }
 
