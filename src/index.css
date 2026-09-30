@@ -121,11 +121,14 @@ h2 {
   text-transform: uppercase;
 }
 
+/* two lines tall with the rule centered on the grid line between them: the same four lines
+   as before, but the box starts and ends on whole lines, so collapsing with a larger margin
+   (a heading's) can't put what follows half a line off */
 hr {
   position: relative;
   display: block;
-  height: var(--line-height);
-  margin: calc(var(--line-height) * 1.5) 0;
+  height: calc(var(--line-height) * 2);
+  margin: var(--line-height) 0;
   border: none;
   color: var(--text-color);
 }
@@ -133,7 +136,7 @@ hr:after {
   display: block;
   content: "";
   position: absolute;
-  top: calc(var(--line-height) / 2 - var(--border-thickness));
+  top: calc(var(--line-height) - var(--border-thickness) * 1.5);
   left: 0;
   width: 100%;
   border-top: calc(var(--border-thickness) * 3) double var(--text-color);
@@ -164,6 +167,15 @@ sub {
   display: inline-block;
   margin: 0;
   vertical-align: sub;
+  line-height: 0;
+  width: calc(1ch / 0.75);
+  font-size: .75rem;
+}
+sup {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  vertical-align: super;
   line-height: 0;
   width: calc(1ch / 0.75);
   font-size: .75rem;
@@ -299,6 +311,23 @@ ul, ol {
   padding: 0;
   margin: 0 0 var(--line-height);
 }
+blockquote {
+  margin: 0 0 var(--line-height);
+  padding-left: calc(2ch - var(--border-thickness));
+  border-left: var(--border-thickness) solid var(--text-color);
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+dl {
+  margin: 0 0 var(--line-height);
+}
+dt {
+  font-weight: var(--font-weight-bold);
+}
+dd {
+  margin: 0 0 0 2ch;
+}
 
 ul {
   list-style-type: square;
@@ -316,10 +345,18 @@ ul ul {
   padding: 0 0 0 3ch;
   margin: 0;
 }
-ol li:before { 
-  content: counters(item, ".") ". ";
+/* float keeps the number on the first line when the item starts with a block (loose lists, footnotes) */
+ol li:before {
+  float: left;
+  white-space: pre;
+  content: counter(item) ". ";
   counter-increment: item;
   font-weight: var(--font-weight-medium);
+}
+/* counters() only when nested: a counter's scope extends to following siblings, so a later,
+   unrelated list would otherwise be numbered as a sublist of the previous one */
+li ol li:before {
+  content: counters(item, ".") ". ";
 }
 
 li {
