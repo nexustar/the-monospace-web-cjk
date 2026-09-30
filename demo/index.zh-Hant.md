@@ -168,15 +168,17 @@ toc-title: 目錄
 我們可以在 `<pre>` 標籤中使用[製表符](https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E7%AC%A6)繪圖：
 
 ```
-╭─────────╮
-│ MONOSPACE ROCKS  │
-╰─────────╯
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
 ```
+
+`<pre>` 裡的製表符預設佔一格，和終端機裡一樣，所以上面這個框可以直接從英文版複製過來。如果圖裡有漢字，想讓製表符和漢字一樣寬（佔兩格），就給 `<pre>` 加上 `class="ascii-cjk"`，下面兩張圖都是這樣畫的。
 
 為了更突出，可以用 `<figure>` 標籤包裹，再加上 `<figcaption>`。
 
 <figure>
-<pre>
+<pre class="ascii-cjk">
 ┌────┐  ┌────┐  ┌────┐
 │參與者１│  │參與者２│  │參與者３│
 └──┬─┘  └──┬─┘  └──┬─┘
@@ -194,7 +196,7 @@ toc-title: 目錄
 
 再來畫一個圖表！
 
-<figure><pre>
+<figure><pre class="ascii-cjk">
               我擁有的東西
 
     │                              ██ 可用

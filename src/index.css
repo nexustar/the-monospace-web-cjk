@@ -47,6 +47,14 @@
 :root:is(:lang(zh), :lang(ja), :lang(ko)) th {
   font-weight: 600;
 }
+/* box drawing and other ambiguous-width characters in <pre> are one column wide, as in a
+   terminal; .ascii-cjk keeps them two columns wide to line up with CJK characters */
+pre {
+  font-feature-settings: "hwid";
+}
+pre.ascii-cjk {
+  font-feature-settings: normal;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

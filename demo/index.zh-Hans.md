@@ -168,15 +168,17 @@ toc-title: 目录
 我们可以在 `<pre>` 标签中使用[制表符](https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E7%AC%A6)绘图：
 
 ```
-╭─────────╮
-│ MONOSPACE ROCKS  │
-╰─────────╯
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
 ```
+
+`<pre>` 里的制表符默认占一格，和终端里一样，所以上面这个框可以直接从英文版复制过来。如果图里有汉字，想让制表符和汉字一样宽（占两格），就给 `<pre>` 加上 `class="ascii-cjk"`，下面两张图都是这样画的。
 
 为了更突出，可以用 `<figure>` 标签包裹，再加上 `<figcaption>`。
 
 <figure>
-<pre>
+<pre class="ascii-cjk">
 ┌────┐  ┌────┐  ┌────┐
 │参与者１│  │参与者２│  │参与者３│
 └──┬─┘  └──┬─┘  └──┬─┘
@@ -194,7 +196,7 @@ toc-title: 目录
 
 再来画一个图表！
 
-<figure><pre>
+<figure><pre class="ascii-cjk">
               我拥有的东西
 
     │                              ██ 可用

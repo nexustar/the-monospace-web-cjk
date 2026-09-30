@@ -12,11 +12,11 @@
   <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
   <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
   <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.3/PlemoCJK-SC-Text.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.3/PlemoCJK-SC-TextItalic.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.3/PlemoCJK-SC-Medium.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.3/PlemoCJK-SC-SemiBold.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.3/PlemoCJK-SC-Bold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.4/PlemoCJK-SC-Text.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.4/PlemoCJK-SC-TextItalic.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.4/PlemoCJK-SC-Medium.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.4/PlemoCJK-SC-SemiBold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-sc@0.0.4/PlemoCJK-SC-Bold.css" />
   <link rel="stylesheet" href="src/reset.css" />
   <link rel="stylesheet" href="src/index.css" />
   <style>
@@ -266,13 +266,17 @@ class，但基本上就是普通的标记。比如，这就是一个普通的段
 <h2 id="ascii-绘图">ASCII 绘图</h2>
 <p>我们可以在 <code>&lt;pre&gt;</code> 标签中使用<a
 href="https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E7%AC%A6">制表符</a>绘图：</p>
-<pre><code>╭─────────╮
-│ MONOSPACE ROCKS  │
-╰─────────╯</code></pre>
+<pre><code>╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯</code></pre>
+<p><code>&lt;pre&gt;</code>
+里的制表符默认占一格，和终端里一样，所以上面这个框可以直接从英文版复制过来。如果图里有汉字，想让制表符和汉字一样宽（占两格），就给
+<code>&lt;pre&gt;</code> 加上
+<code>class="ascii-cjk"</code>，下面两张图都是这样画的。</p>
 <p>为了更突出，可以用 <code>&lt;figure&gt;</code> 标签包裹，再加上
 <code>&lt;figcaption&gt;</code>。</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
 ┌────┐  ┌────┐  ┌────┐
 │参与者１│  │参与者２│  │参与者３│
 └──┬─┘  └──┬─┘  └──┬─┘
@@ -291,7 +295,7 @@ href="https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E7%AC%A6">制表符</a>�
 </figure>
 <p>再来画一个图表！</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
               我拥有的东西
 
     │                              ██ 可用

@@ -12,11 +12,11 @@
   <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
   <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
   <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.3/PlemoCJK-KR-Text.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.3/PlemoCJK-KR-TextItalic.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.3/PlemoCJK-KR-Medium.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.3/PlemoCJK-KR-SemiBold.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.3/PlemoCJK-KR-Bold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.4/PlemoCJK-KR-Text.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.4/PlemoCJK-KR-TextItalic.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.4/PlemoCJK-KR-Medium.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.4/PlemoCJK-KR-SemiBold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-kr@0.0.4/PlemoCJK-KR-Bold.css" />
   <link rel="stylesheet" href="src/reset.css" />
   <link rel="stylesheet" href="src/index.css" />
   <style>
@@ -277,13 +277,19 @@ CSS와 약간의 Javascript가 그리드 위에 렌더링합니다. 페이지는
 <p><code>&lt;pre&gt;</code> 태그에서 <a
 href="https://ko.wikipedia.org/wiki/%EC%83%81%EC%9E%90_%EA%B7%B8%EB%A6%AC%EA%B8%B0">상자
 그리기 문자</a>를 사용하여 그릴 수 있습니다:</p>
-<pre><code>╭─────────╮
-│ MONOSPACE ROCKS  │
-╰─────────╯</code></pre>
+<pre><code>╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯</code></pre>
+<p><code>&lt;pre&gt;</code> 안의 상자 그리기 문자는 터미널처럼
+기본적으로 한 칸을 차지합니다. 그래서 위의 상자는 영어판에서 그대로
+복사할 수 있습니다. 그림에 한글이나 한자가 들어가서 선을 글자와 같은
+전각(두 칸)으로 맞추고 싶다면 <code>&lt;pre&gt;</code>에
+<code>class="ascii-cjk"</code>를 붙이세요. 아래 두 그림이 이렇게
+그려졌습니다.</p>
 <p>더 눈에 띄게 하려면 <code>&lt;figure&gt;</code> 태그로 감싸고
 <code>&lt;figcaption&gt;</code>을 추가할 수 있습니다.</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
 ┌────┐  ┌────┐  ┌────┐
 │참여자１│  │참여자２│  │참여자３│
 └──┬─┘  └──┬─┘  └──┬─┘
@@ -302,7 +308,7 @@ href="https://ko.wikipedia.org/wiki/%EC%83%81%EC%9E%90_%EA%B7%B8%EB%A6%AC%EA%B8%
 </figure>
 <p>차트도 그려봅시다!</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
               내가 가진 것들
 
     │                              ██ 사용 가능

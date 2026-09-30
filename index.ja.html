@@ -12,11 +12,11 @@
   <link rel="alternate" hreflang="ja" href="https://nexustar.github.io/the-monospace-web-cjk/index.ja.html" />
   <link rel="alternate" hreflang="ko" href="https://nexustar.github.io/the-monospace-web-cjk/index.ko.html" />
   <link rel="alternate" hreflang="x-default" href="https://nexustar.github.io/the-monospace-web-cjk/" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.3/PlemoCJK-JP-Text.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.3/PlemoCJK-JP-TextItalic.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.3/PlemoCJK-JP-Medium.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.3/PlemoCJK-JP-SemiBold.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.3/PlemoCJK-JP-Bold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.4/PlemoCJK-JP-Text.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.4/PlemoCJK-JP-TextItalic.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.4/PlemoCJK-JP-Medium.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.4/PlemoCJK-JP-SemiBold.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plemocjk-jp@0.0.4/PlemoCJK-JP-Bold.css" />
   <link rel="stylesheet" href="src/reset.css" />
   <link rel="stylesheet" href="src/index.css" />
   <style>
@@ -268,14 +268,18 @@ HTML を、まるで 70 年代に戻ったかのようにレンダリングし�
 <h2 id="ascii-描画">ASCII 描画</h2>
 <p><code>&lt;pre&gt;</code> タグで<a
 href="https://ja.wikipedia.org/wiki/%E7%BD%AB%E7%B7%9A%E7%B4%A0%E7%89%87">罫線素片</a>を使って描画できます：</p>
-<pre><code>╭─────────╮
-│ MONOSPACE ROCKS  │
-╰─────────╯</code></pre>
+<pre><code>╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯</code></pre>
+<p><code>&lt;pre&gt;</code>
+の罫線素片は、ターミナルと同じく既定で1マス幅です。そのため上の枠は英語版からそのままコピーできます。図に漢字や仮名が入り、罫線を文字と同じ全角（2マス幅）で揃えたいときは、<code>&lt;pre&gt;</code>
+に <code>class="ascii-cjk"</code>
+を付けます。下の2つの図はこの方法で描いています。</p>
 <p>より目立たせるために <code>&lt;figure&gt;</code>
 タグで囲み、<code>&lt;figcaption&gt;</code>
 を追加することもできます。</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
 ┌────┐  ┌────┐  ┌────┐
 │参加者１│  │参加者２│  │参加者３│
 └──┬─┘  └──┬─┘  └──┬─┘
@@ -294,7 +298,7 @@ href="https://ja.wikipedia.org/wiki/%E7%BD%AB%E7%B7%9A%E7%B4%A0%E7%89%87">罫線
 </figure>
 <p>チャートも描いてみましょう！</p>
 <figure>
-<pre>
+<pre class="ascii-cjk">
               持っているもの
 
     │                              ██ 使える
