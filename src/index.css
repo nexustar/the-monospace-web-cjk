@@ -276,6 +276,23 @@ ul, ol {
   padding: 0;
   margin: 0 0 var(--line-height);
 }
+blockquote {
+  margin: 0 0 var(--line-height);
+  padding-left: calc(2ch - var(--border-thickness));
+  border-left: var(--border-thickness) solid var(--text-color);
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+dl {
+  margin: 0 0 var(--line-height);
+}
+dt {
+  font-weight: var(--font-weight-bold);
+}
+dd {
+  margin: 0 0 0 2ch;
+}
 
 ul {
   list-style-type: square;
